@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="tg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кунҷи Дониш</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #d0e8f2, #fdf6f0, #e6f7ff, #f9f9f9);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+@keyframes fadeInColor {
+  0% {color: #007bff; opacity: 0;}
+  50% {color: #00cc99; opacity: 0.7;}
+  100% {color: #ff6600; opacity: 1;}
+}
+
+header {
+  background: url('https://i.ibb.co/9q7fDcc/classroom.jpg') center/cover no-repeat;
+  height: 400px;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+}
+
+header h1 {
+  font-size: 48px;
+  margin: 0;
+  animation: fadeInColor 3s ease-in-out infinite alternate;
+}
+
+header p { font-size: 20px; }
+
+.button {
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.courses {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.course-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  cursor: pointer;
+  background-color: white;
+  transition: transform 0.2s ease;
+}
+
+.course-box:hover {
+  background-color: #f0f8ff;
+  transform: scale(1.05);
+}
+
+.details {
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: left;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #666;
+  opacity: 0.6;
+}
+
+.details h3 { color: #007bff; }
+
+form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #ffffffcc;
+  backdrop-filter: blur(4px);
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+  text-align: left;
+}
+
+form input, form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#price-output {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Кунҷи Дониш</h1>
+    <p>Мо шуморо барои мактаб, имтиҳонҳо ва ояндаи дурахшон омода мекунем!</p>
+    <button class="button" onclick="scrollToForm()">Сабти ном</button>
+  </header>  <div class="section">
+    <h2>Курсҳо ва нархҳо</h2>
+    <div class="courses">
+      <div class="course-box" onclick="selectCourse('Забони англисӣ', 200)">
+        <h3>Забони англисӣ</h3>
+        <p>200 сомонӣ / моҳ</p>
+      </div>
+      <div class="course-box" onclick="selectCourse('Забони русӣ', 200)">
+        <h3>Забони русӣ</h3>
+        <p>200 сомонӣ / моҳ</p>
+      </div>
+      <div class="course-box" onclick="selectCourse('Забони кореягӣ', 325)">
+        <h3>Забони кореягӣ</h3>
+        <p>325 сомонӣ / моҳ</p>
+      </div>
+      <div class="course-box" onclick="selectCourse('ММТ-5', 700)">
+        <h3>Курси "ММТ-5"</h3>
+        <p>700 сомонӣ (мукаммал)</p>
+      </div>
+    </div>
+  </div>  <form id="form" onsubmit="return validateForm()">
+    <h2>Сабти ном</h2>
+    <label>Ном ва насаб:
+      <input type="text" name="name" required>
+    </label>
+    <label>Кишвари истиқомат:
+      <select id="country" onchange="updatePhonePrefix()">
+        <option disabled selected>Кишвари худро интихоб кунед</option>
+        <option value="+992">Тоҷикистон</option>
+        <option value="+7">Русия</option>
+        <option value="+998">Узбекистон</option>
+        <option value="+996">Қирғизистон</option>
+        <option value="+993">Туркманистон</option>
+        <option value="+994">Озарбойҷон</option>
+        <option value="+995">Гурҷистон</option>
+        <option value="+374">Арманистон</option>
+        <option value="+90">Туркия</option>
+        <option value="+86">Хитой</option>
+        <option value="+91">Ҳиндустон</option>
+        <option value="+977">Непал</option>
+        <option value="+963">Сурия</option>
+        <option value="+964">Ироқ</option>
+        <option value="+98">Эрон</option>
+        <option value="+971">Аморати Муттаҳидаи Араб</option>
+        <option value="+1">ИМА</option>
+        <option value="+44">Англия</option>
+        <option value="+49">Олмон</option>
+        <option value="+33">Фаронса</option>
+        <option value="+39">Италия</option>
+      </select>
+    </label>
+    <label>Рақами телефон:
+      <input type="text" name="phone" id="phone" required placeholder="Масалан: 917669009">
+    </label>
+    <label>Курс:
+      <input type="text" name="course" id="selected-course" readonly required>
+    </label>
+    <label>Мӯҳлати курс (моҳ):
+      <select id="duration" onchange="updatePrice()">
+        <option disabled selected>Интихоб кунед</option>
+        <script>
+          for (let i = 1; i <= 12; i++) {
+            document.write(`<option value="${i}">${i} моҳ</option>`);
+          }
+        </script>
+      </select>
+    </label>
+    <div id="price-output">Нарх: 0 сомонӣ</div>
+    <button type="submit" class="button">Фиристодан</button>
+  </form>  <div class="details">
+    <h3>Ҷадвали дарсҳо:</h3>
+    <ul>
+      <li>3 маротиба дар як ҳафта, ҳар дарс 1 соату 30 дақиқа</li>
+    </ul>
+    <h3>Курси махсуси “ММТ-5”:</h3>
+    <ul>
+      <li>Дарсҳо: 6 рӯз дар як ҳафта + 1 рӯз санҷиши имтиҳонӣ</li>
+      <li>Вақт: Ҳар рӯз аз соати 14:00 то 18:00 (4 соат)</li>
+      <li>Мӯҳлат: Бе рӯзҳои истироҳат</li>
+    </ul>
+    <h3>Фанҳои омӯзишӣ:</h3>
+    <ul>
+      <li>Химия</li>
+      <li>Биология</li>
+      <li>Физика</li>
+      <li>Забони тоҷикӣ</li>
+    </ul>
+  </div>  <script>
+    let currentPrice = 0;
+    function selectCourse(name, price) {
+      document.getElementById('selected-course').value = name;
+      currentPrice = price;
+      updatePrice();
+      scrollToForm();
+    }
+
+    function updatePrice() {
+      const months = parseInt(document.getElementById('duration').value);
+      const total = months * currentPrice;
+      if (!isNaN(total)) {
+        document.getElementById('price-output').textContent = 'Нарх: ' + total + ' сомонӣ';
+      }
+    }
+
+    function scrollToForm() {
+      document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function validateForm() {
+      const course = document.getElementById('selected-course').value;
+      if (!course) {
+        alert("Лутфан аввал курсро интихоб кунед!");
+        return false;
+      }
+      return true;
+    }
+
+    function updatePhonePrefix() {
+      const code = document.getElementById('country').value;
+      const phoneInput = document.getElementById('phone');
+      phoneInput.value = code + ' ';
+      phoneInput.focus();
+    }
+  </script></body>
+</html>   

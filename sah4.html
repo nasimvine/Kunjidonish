@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Кунҷи Дониш - Профили Истифодабаранда</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #2c3e50;
+            padding: 20px 30px;
+            color: white;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        main {
+            flex: 1;
+            display: flex;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        /* Панели профил */
+        .profile {
+            width: 300px;
+            background: #1abc9c;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 20px;
+        }
+        .profile h2 {
+            margin: 10px 0 5px 0;
+        }
+        .profile p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .logout-btn {
+            margin-top: auto;
+            background: #16a085;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .logout-btn:hover {
+            background: #12806a;
+        }
+
+        /* Панели чат */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f0f4f8;
+        }
+        /* Меню курсов слева */
+        .courses-list {
+            background: #34495e;
+            color: white;
+            width: 200px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .courses-list h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+        .courses-list button {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            width: 100%;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .courses-list button:hover,
+        .courses-list button.active {
+            background-color: #1abc9c;
+            color: white;
+        }
+
+        /* Область чата справа */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .chat-header {
+            font-weight: 700;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 8px;
+        }
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: inset 0 0 8px #ddd;
+            margin-bottom: 15px;
+        }
+        .message {
+            margin-bottom: 12px;
+            line-height: 1.4;
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            word-wrap: break-word;
+        }
+        .message.user {
+            background-color: #1abc9c;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        .message.other {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input textarea {
+            flex: 1;
+            resize: none;
+            padding: 12px 15px;
+            border-radius: 20px;
+            border: 1.5px solid #ccc;
+            font-size: 1em;
+            font-family: 'Roboto', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        .chat-input textarea:focus {
+            border-color: #1abc9c;
+            outline: none;
+        }
+        .chat-input button {
+            background-color: #1abc9c;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .chat-input button:hover {
+            background-color: #16a085;
+        }
+
+        /* Скроллбар барои паёмҳо */
+        .messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        .messages::-webkit-scrollbar-thumb {
+            background-color: #1abc9c;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>Кунҷи Дониш</header>
+    <main>
+        <section class="profile">
+            <img src="https://i.pravatar.cc/120" alt="Профили Истифодабаранда" />
+            <h2 id="userName">Истифодабаранда</h2>
+            <p id="userEmail">email@example.com</p>
+            <button class="logout-btn" onclick="logout()">Баромадан</button>
+        </section>
+        <section class="chat-container">
+            <div class="courses-list">
+                <h3>Курсҳо</h3>
+                <button class="active" onclick="selectCourse('Курси Кореягӣ')">Курси Кореягӣ</button>
+                <button onclick="selectCourse('Курси Англисӣ')">Курси Англисӣ</button>
+                <button onclick="selectCourse('Курси Русӣ')">Курси Русӣ</button>
+            </div>
+            <div class="chat-area">
+                <div class="chat-header" id="chatHeader">Курси Кореягӣ</div>
+                <div class="messages" id="messages">
+                    <!-- Паёмҳои чат инҷо пайдо мешаванд -->
+                </div>
+                <div class="chat-input">
+                    <textarea id="chatInput" rows="2" placeholder="Паёмро нависед..."></textarea>
+                    <button onclick="sendMessage()">Фиристодан</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Маълумоти намунавии корбар
+        const user = {
+            name: 'Ҷаҳонгир',
+            email: 'jahongir@example.com'
+        };
+
+        // Захира кардани паёмҳо барои ҳар курс
+        const chats = {
+            'Курси Кореягӣ': [
+                {sender: 'other', text: 'Салом! Шумо ба курси кореягӣ хуш омадед.'}
+            ],
+            'Курси Англисӣ': [
+                {sender: 'other', text: 'Welcome to the English course!'}
+            ],
+            'Курси Русӣ': [
+                {sender: 'other', text: 'Добро пожаловать на курс русского языка!'}
+            ]
+        };
+
+        let currentCourse = 'Курси Кореягӣ';
+
+        // Иҷрои функсия барои нишон додани профил
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userEmail').textContent = user.email;
+
+        // Функсия барои интихоб кардани курс ва навсозии чат
+        function selectCourse(courseName) {
+            currentCourse = courseName;
+
+            // Навсозии тугмаҳо
+            const buttons = document.querySelectorAll('.courses-list button');
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === courseName);
+            });
+
+            // Навсозии сарлавҳаи чат
+            document.getElementById('chatHeader').textContent = courseName;
+
+            // Навсозии паёмҳо
+            renderMessages();
+        }
+
+        // Намоиши паёмҳои чат
+        function renderMessages() {
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.innerHTML = '';
+
+            chats[currentCourse].forEach(msg => {
+                const div = document.createElement('div');
+                div.classList.add('message');
+                div.classList.add(msg.sender === 'user' ? 'user' : 'other');
+                div.textContent = msg.text;
+                messagesContainer.appendChild(div);
+            });
+
+            // Скролл ба поёни чат
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Функсияи фиристодани паём
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (text === '') return;
+
+            // Илова кардани паём аз корбар
+            chats[currentCourse].push({sender: 'user', text: text});
+            renderMessages();
+
+            input.value = '';
+
+            // Ҷавоб аз система (намуна)
+            setTimeout(() => {
+                chats[currentCourse].push({sender: 'other', text: 'Ташаккур барои паёматон!'});
+                renderMessages();
+            }, 1000);
+        }
+
+        // Аввалин бор чати курси кореягиро нишон диҳед
+        renderMessages();
+
+        // Функсияи баромадан (барои мисол, саҳифаи асосиро мекушояд)
+        function logout() {
+            if (confirm('Оё мехоҳед аз аккаунти худ баромад кунед?')) {
+                window.location.href = 'sah_one.html'; // Ба саҳифаи асосӣ баргардед
+            }
+        }
+    </script>
+</body>
+</html>

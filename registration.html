@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Кунҷи Дониш - Сабти ном</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #2c3e50;
+            padding: 20px 30px;
+            color: white;
+            text-align: center;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        main {
+            flex: 1;
+            max-width: 450px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(44,62,80,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 700;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 8px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #34495e;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1.8px solid #ccc;
+            border-radius: 7px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus {
+            border-color: #1abc9c;
+            outline: none;
+        }
+        button {
+            background-color: #1abc9c;
+            color: white;
+            padding: 14px 0;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #16a085;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 18px;
+        }
+        .back-link a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+            margin: 40px 0 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Кунҷи Дониш
+    </header>
+    <main>
+        <h2>Формаи Сабти Ном</h2>
+        <form id="regForm" onsubmit="return false;">
+            <label for="firstname">Ном</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Номи Шумо" required />
+
+            <label for="lastname">Насаб</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Насаби Шумо" required />
+
+            <label for="phone">Рақами телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+992 917669009" required pattern="^\+?\d{7,15}$" />
+
+            <label for="email">Почтаи электронӣ</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required />
+
+            <button type="submit" onclick="submitForm()">Сабти ном</button>
+        </form>
+        <div class="back-link">
+            <a href="sah_one.html">Баргашт ба саҳифаи асосӣ</a>
+        </div>
+    </main>
+    <footer>
+        © 2025 Кунҷи Дониш. Ҳамаи ҳуқуқҳо ҳифз шудаанд.
+    </footer>
+
+    <script>
+        function validatePhone(phone) {
+            const phonePattern = /^\+?\d{7,15}$/;
+            return phonePattern.test(phone);
+        }
+
+        function submitForm() {
+            const firstname = document.getElementById('firstname').value.trim();
+            const lastname = document.getElementById('lastname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!firstname || !lastname || !phone || !email) {
+                alert('Лутфан ҳамаи майдонҳоро пур кунед.');
+                return;
+            }
+            if (!validatePhone(phone)) {
+                alert('Лутфан рақами телефони дурустро ворид кунед, масалан: +992917669009');
+                return;
+            }
+            // Агар лозим бошад, метавонистед инҷо маълумотро ба сервер фиристед
+
+            // Ба саҳифаи 3юм гузаред
+            window.location.href = 'sah3.html';
+        }
+    </script>
+</body>
+</html>

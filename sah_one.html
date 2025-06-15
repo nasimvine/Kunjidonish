@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Кунҷи Дониш - Саҳифаи Асосӣ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            padding: 20px 30px;
+            color: white;
+            text-align: center;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        nav {
+            background: #34495e;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #1abc9c;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        section.about {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(44,62,80,0.1);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        section.reviews {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(44,62,80,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 6px;
+            font-weight: 700;
+        }
+        .review-item {
+            border-left: 4px solid #1abc9c;
+            padding-left: 15px;
+            margin-bottom: 18px;
+            font-style: italic;
+            color: #555;
+        }
+        .review-meta {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 6px;
+            font-size: 0.9em;
+        }
+        footer {
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+            margin: 40px 0 20px 0;
+        }
+        .btn-register {
+            display: inline-block;
+            background-color: #1abc9c;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-register:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Кунҷи Дониш
+    </header>
+    <nav>
+        <a href="#about">Дар бораи марказ</a>
+        <a href="#reviews">Назарҳои талабагон</a>
+        <a href="registration.html">Сабти ном</a>
+    </nav>
+    <main>
+        <section id="about" class="about">
+            <h2>Дар бораи марказ</h2>
+            <p>
+                Маркази "Кунҷи Дониш" як макони таълимӣ аст, ки ба омӯзиши забонҳои кореягӣ, англисӣ ва русӣ диққат медиҳад.  
+                Дар марказ омӯзгорони ботаҷриба ва муҳити дӯстро барои таҳсили босамар фароҳам овардаанд.  
+                Мақсади мо кӯмак расонидан ба шумо барои ба зудӣ ва осон омӯхтани забонҳои хориҷӣ мебошад.
+            </p>
+            <a href="registration.html" class="btn-register">Ба сабти ном гузаштан</a>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <h2>Назарҳои талабагон</h2>
+            <div class="review-item">
+                "Ман хеле хушҳолам, ки забони кореягиро дар Кунҷи Дониш омӯхтам. Омӯзгорон хеле самимӣ ва маҳоратманд ҳастанд."  
+                <div class="review-meta">— Саёҳат (кореягӣ)</div>
+            </div>
+            <div class="review-item">
+                "Great center! The English courses helped me improve my speaking skills a lot."  
+                <div class="review-meta">— Nasimjon (англисӣ)</div>
+            </div>
+            <div class="review-item">
+                "Очень хороший центр, преподаватели внимательные и добрые."  
+                <div class="review-meta">— Маҳина (русӣ)</div>
+            </div>
+            <div class="review-item">
+                "한국어를 배우기 위해 이곳에 왔는데, 수업이 매우 체계적이고 재미있습니다."  
+                <div class="review-meta">— Sabur (кореягӣ)</div>
+            </div>
+            <div class="review-item">
+                "I highly recommend this center to everyone who wants to learn languages."  
+                <div class="review-meta">— Muhammad (англисӣ)</div>
+            </div>
+            <div class="review-item">
+                "В центре хорошие условия для обучения, атмосфера дружелюбная."  
+                <div class="review-meta">— Дилноза (русӣ)</div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        © 2025 Кунҷи Дониш. Ҳамаи ҳуқуқҳо ҳифз шудаанд.
+    </footer>
+</body>
+</html>
